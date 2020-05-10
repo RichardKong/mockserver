@@ -6,19 +6,19 @@ var Random = Mock.Random;
 router.post('/CheckReply', function (req, res, next) {
     var data = Mock.mock({
         "replies|1-50": [{
-            "postid|+1": 2,
-            "postname|1-10": "*",
-            "author|1-10": "*",
-            "receiver|1-10": "*",
+            "postid|+1": Random.integer(1,1000),
+            "postname": Random.string(),
+            "author": Random.string(),
+            "receiver": Random.string(),
             "time": Random.datetime(),
-            "content|1-200": "*",
-            "floor|1-100": 2,
+            "content": Random.string(),
+            "floor": Random.integer(1,100),
             "Rstate|1-2": true,
-            "id|1+": 2,
+            "id|+1": Random.natural(1, 80000),
         }]
     });
     res.send({
-        replies: data
+        ReplyMessage: data
     });
 });
 
